@@ -1,0 +1,11 @@
+---
+title: "New Gapminder Analysis"
+---
+
+# Welcome to the Gapminder Analysis Website
+
+This website presents a new analysis of the Gapminder dataset, which covers 142 countries from 1952 to 2007. Explore the data through the following pages:
+
+-   [LifeExp vs GDP](life-gdp.qmd) <!-- Analysis of life expectancy vs GDP per capita -->
+-   [LifeExp vs Population](life-population.qmd) <!-- Analysis of life expectancy vs population -->
+-   [Country Trends](country.qmd) <!-- Trends for a specific country -->

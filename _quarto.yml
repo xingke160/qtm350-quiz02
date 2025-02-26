@@ -1,0 +1,21 @@
+project:
+  type: website
+
+output-dir: docs
+
+website:
+  title: "New Gapminder Analysis"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "LifeExp vs GDP"
+        href: life-gdp.qmd
+      - text: "LifeExp vs Population"
+        href: life-population.qmd
+      - text: "Country Trends"
+        href: country.qmd
+
+format:
+  html:
+    theme: flatly
