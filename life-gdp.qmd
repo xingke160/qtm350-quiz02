@@ -1,0 +1,36 @@
+---
+title: "LifeExp vs GDP"
+---
+
+# Life Expectancy vs GDP per Capita
+
+This page examines the relationship between life expectancy and GDP per capita. The scatter plot below applies a logarithmic scale to the x-axis to better display the data.
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+# Read the Gapminder dataset using the new file path
+gapminder_data <- read_csv("D:/qtm350-quiz02/gapminder.csv")
+
+# Ensure proper data types
+gapminder_data <- gapminder_data %>%
+  mutate(
+    year = as.integer(year),
+    life_expectancy = as.numeric(life_expectancy),
+    gdp_per_capita = as.numeric(gdp_per_capita)
+  )
+
+# Create a scatter plot with a log scale on the x-axis
+ggplot(gapminder_data, aes(x = gdp_per_capita, y = life_expectancy, color = factor(year))) +
+  geom_point(size = 2) +
+  scale_x_log10() +
+  labs(
+    x = "GDP per Capita (log scale)",
+    y = "Life Expectancy",
+    color = "Year"
+  ) +
+  theme_bw()
+```

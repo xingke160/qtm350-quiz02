@@ -1,0 +1,49 @@
+---
+title: "Country Trends"
+---
+
+# Country Trends Analysis
+
+This page analyzes trends in life expectancy, GDP per capita, and population for a specific country. In this example, we focus on China.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(gridExtra)  # For arranging multiple plots
+
+# Read the dataset using the new file path
+data <- read_csv("D:/qtm350-quiz02/gapminder.csv")
+
+# Ensure proper data types
+data <- data %>% mutate(
+  year = as.integer(year),
+  life_expectancy = as.numeric(life_expectancy),
+  gdp_per_capita = as.numeric(gdp_per_capita),
+  population_millions = as.numeric(population_millions)
+)
+
+# Filter data for China
+china_data <- data %>% filter(country == "China")
+
+# Plot 1: Life Expectancy Trend
+plot1 <- ggplot(china_data, aes(x = year, y = life_expectancy)) +
+  geom_line(color = "navy", size = 1) +
+  labs(title = "Life Expectancy Trend", x = "Year", y = "Life Expectancy") +
+  theme_minimal()
+
+# Plot 2: GDP per Capita Trend
+plot2 <- ggplot(china_data, aes(x = year, y = gdp_per_capita)) +
+  geom_line(color = "darkorange", size = 1) +
+  labs(title = "GDP per Capita Trend", x = "Year", y = "GDP per Capita") +
+  theme_minimal()
+
+# Plot 3: Population Trend
+plot3 <- ggplot(china_data, aes(x = year, y = population_millions)) +
+  geom_line(color = "forestgreen", size = 1) +
+  labs(title = "Population Trend", x = "Year", y = "Population (millions)") +
+  theme_minimal()
+
+# Arrange the three plots vertically
+grid.arrange(plot1, plot2, plot3, ncol = 1)
+```

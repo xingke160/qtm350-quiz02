@@ -1,0 +1,33 @@
+---
+title: "LifeExp vs Population"
+---
+
+# Life Expectancy vs Population
+
+This page explores the relationship between life expectancy and population (in millions) across different continents.
+
+```{r}
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+# Load dataset using the new file path
+gap_data <- read_csv("D:/qtm350-quiz02/gapminder.csv")
+
+# Convert columns to proper types
+gap_data <- gap_data %>%
+  mutate(
+    population_millions = as.numeric(population_millions),
+    life_expectancy = as.numeric(life_expectancy)
+  )
+
+# Create a scatter plot of life expectancy vs population
+ggplot(gap_data, aes(x = population_millions, y = life_expectancy, color = continent)) +
+  geom_point(size = 2, alpha = 0.7) +
+  labs(
+    x = "Population (millions)",
+    y = "Life Expectancy",
+    color = "Continent"
+  ) +
+  theme_light()
+```
